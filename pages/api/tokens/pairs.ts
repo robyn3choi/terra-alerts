@@ -6,8 +6,7 @@ type Data = {
 };
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  const url = decodeURIComponent(req.query.url as string);
-  const result = await fetch(url);
-  const body: any = await result.body;
-  body.pipe(res);
+  const response = await fetch("https://api.coinhall.org/api/v1/charts/terra/pairs");
+  const json = await response.json();
+  res.send(json);
 }

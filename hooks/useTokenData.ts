@@ -7,13 +7,12 @@ import { useWatchedPairs } from "context/WatchedPairsContext";
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 export default function useTokenData() {
-  const { data: pairsData, error: pairsError } = useSWR("https://api.coinhall.org/api/v1/charts/terra/pairs", fetcher);
+  const { data: pairsData, error: pairsError } = useSWR("/api/tokens/pairs", fetcher);
 
-  const { data: pricesData, error: pricesError } = useSWR(
-    "https://api.coinhall.org/api/charts/terra/prices/latest",
-    fetcher,
-    { refreshInterval: 10000, refreshWhenHidden: true }
-  );
+  const { data: pricesData, error: pricesError } = useSWR("/api/tokens/latest", fetcher, {
+    refreshInterval: 10000,
+    refreshWhenHidden: true,
+  });
 
   const { updatePrices } = useWatchedPairs();
   const [hasFetchedData, setHasFetchedData] = useState<boolean>(false);
