@@ -17,3 +17,21 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* remove default button styling  */
+button,
+button:focus {
+  outline: none;
+  background: transparent;
+  border: 1px solid transparent;
+  font-family: inherit;
+}
+
+button:active {
+  outline: none;
+  font-family: inherit;
+}
+
+input:focus-visible {
+  outline: 1px solid rgb(61 76 108);
+}

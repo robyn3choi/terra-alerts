@@ -11,13 +11,21 @@
   border-radius: 9999px;
 }
 
+.icons {
+  flex-shrink: 0;
+}
+
 .nameAndSymbols {
   margin-left: 8px;
+  min-width: 0; /* enables text-overflow: ellipsis on name */
 }
 
 .name {
   font-size: x-large;
   font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .pairSymbols {

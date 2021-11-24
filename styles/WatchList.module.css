@@ -8,16 +8,13 @@
   background: rgb(23, 32, 51);
   padding: 16px;
   margin-top: 8px;
+  border-radius: 6px;
 }
 
 .removeButton {
   position: absolute;
   top: 8px;
   right: 8px;
-  outline: none;
-  background: transparent;
-  border: 1px solid transparent;
-  font-family: inherit;
   color: white;
   height: 28px;
   width: 28px;
@@ -25,28 +22,15 @@
   cursor: pointer;
 }
 
-/* remove default button styling  */
-.addAlertButton,
-.addAlertButton:focus {
-  outline: none;
-  background: transparent;
-  border: 1px solid transparent;
-  font-family: inherit;
-}
-
-.addAlertButton:active {
-  outline: none;
-  background: #262c48;
-  font-family: inherit;
-}
-
 .addAlertButton {
   color: white;
   font-size: medium;
   width: 100%;
   background: rgb(61 76 108);
-  height: 36px;
+  height: 40px;
   cursor: pointer;
+  border-radius: 4px;
+  margin-top: 4px;
   /* margin-top: 8px; */
   /* border: 1px solid white; */
 }
@@ -54,11 +38,11 @@
 .price {
   position: absolute;
   right: 16px;
-  top: 46px;
+  top: 48px;
   font-family: "Ubuntu Mono", monospace;
-  font-size: x-large;
+  font-size: 22px;
 }
 
 .alerts {
-  margin-top: 16px;
+  margin-top: 12px;
 }

@@ -1,0 +1,64 @@
+.addAlert {
+  font-family: "Ubuntu Mono", monospace;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  border-top: 1px solid rgb(61 76 108);
+  padding-top: 6px;
+}
+
+.input {
+  height: 40px;
+  min-width: 0;
+  flex-grow: 1;
+  font-size: larger;
+  background: rgb(39 52 77);
+  box-shadow: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  color: white;
+  padding: 0 8px;
+  text-align: right;
+  font-family: "Ubuntu Mono", monospace;
+  margin-left: auto;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.addButton {
+  color: white;
+  font-size: medium;
+  width: 48px;
+  background: rgb(61 76 108);
+  height: 40px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 8px;
+  margin-left: 8px;
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.addButton:disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.currency {
+  font-size: larger;
+  margin-left: 8px;
+}
+
+.cancelButton {
+  color: white;
+  cursor: pointer;
+}

@@ -61,7 +61,12 @@ export default function WatchListItem({
         ))}
       </div>
       {isAddingAlert ? (
-        <AddAlert currency={pair.secondary.symbol} onAddAlert={handleAddAlert} />
+        <AddAlert
+          currency={pair.secondary.symbol}
+          onAddAlert={handleAddAlert}
+          onCancel={() => setIsAddingAlert(false)}
+          alerts={alerts}
+        />
       ) : (
         <button className={s.addAlertButton} onClick={() => setIsAddingAlert(true)}>
           + Add alert

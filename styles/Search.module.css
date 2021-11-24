@@ -23,7 +23,7 @@
   border: 3px solid rgb(41, 53, 72);
   border-radius: 6px;
   margin-top: 62px;
-  max-width: 688px;
+  max-width: 608px;
   z-index: 9999;
 }
 
@@ -32,21 +32,6 @@
   text-align: left;
   padding: 12px 18px;
   width: 100%;
-}
-
-/* remove default button styling  */
-.searchListItem,
-.searchListItem:focus {
-  outline: none;
-  background: transparent;
-  border: 1px solid transparent;
-  font-family: inherit;
-}
-
-.searchListItem:active {
-  outline: none;
-  background: #262c48;
-  font-family: inherit;
 }
 
 .searchListItem:hover {
