@@ -1,0 +1,10 @@
+.noTokenIcon {
+  border-radius: 9999px;
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+  --tw-gradient-from: #7c3aed;
+  --tw-gradient-stops: var(--tw-gradient-from), #ec4899,
+    var(--tw-gradient-to, rgba(236, 72, 153, 0));
+  --tw-gradient-to: #ef4444;
+  width: 40px;
+  height: 40px;
+}

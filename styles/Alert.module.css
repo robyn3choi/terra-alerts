@@ -1,0 +1,51 @@
+.alert {
+  display: flex;
+  align-items: center;
+  /* margin: 4px 0; */
+  border-top: 1px solid rgb(61 76 108);
+  padding: 12px 0;
+}
+
+.alert:last-child {
+  border-bottom: none;
+}
+
+.below {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid red;
+  margin-right: 4px;
+}
+
+.above {
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid green;
+  margin-right: 4px;
+}
+
+.text {
+  font-size: large;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.switch {
+  margin-left: auto;
+}
+
+.removeButton {
+  outline: none;
+  background: none;
+  border: 1px solid transparent;
+  color: white;
+  cursor: pointer;
+  height: 28px;
+  margin-left: 8px;
+}
