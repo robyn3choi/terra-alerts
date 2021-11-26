@@ -15,7 +15,6 @@
   position: absolute;
   top: 8px;
   right: 8px;
-  color: white;
   height: 28px;
   width: 28px;
   padding: 0;
@@ -23,10 +22,9 @@
 }
 
 .addAlertButton {
-  color: white;
   font-size: medium;
   width: 100%;
-  background: rgb(61 76 108);
+  background: var(--color_button);
   height: 40px;
   cursor: pointer;
   border-radius: 4px;

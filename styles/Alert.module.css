@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   /* margin: 4px 0; */
-  border-top: 1px solid rgb(61 76 108);
+  border-top: 1px solid var(--color_button);
   padding: 12px 0;
 }
 
@@ -34,16 +34,9 @@
 .text {
   font-size: larger;
   font-family: "Ubuntu Mono", monospace;
-  /* color: rgb(61 76 108); */
-}
-
-.price {
-  /* font-weight: bold; */
-  /* color: white; */
 }
 
 .switch {
-  /* margin-left: auto; */
   margin-left: 8px;
 }
 
@@ -51,7 +44,7 @@
   outline: none;
   background: none;
   border: 1px solid transparent;
-  color: white;
+  color: var(--color_text);
   cursor: pointer;
   height: 28px;
   /* margin-left: 8px; */

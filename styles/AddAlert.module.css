@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   max-width: 100%;
-  border-top: 1px solid rgb(61 76 108);
+  border-top: 1px solid var(--color_button);
   padding-top: 6px;
 }
 
@@ -16,7 +16,7 @@
   box-shadow: none;
   border: 1px solid transparent;
   border-radius: 4px;
-  color: white;
+  color: var(--color_text);
   padding: 0 8px;
   text-align: right;
   font-family: "Ubuntu Mono", monospace;
@@ -36,7 +36,7 @@
 }
 
 .addButton {
-  color: white;
+  color: var(--color_text);
   font-size: medium;
   width: 48px;
   background: rgb(61 76 108);
@@ -59,6 +59,5 @@
 }
 
 .cancelButton {
-  color: white;
   cursor: pointer;
 }

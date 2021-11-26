@@ -24,6 +24,8 @@ export default function AlertView({ alert, currentPrice, currency, onRemoveAlert
         checkedIcon={false}
         width={48}
         className={s.switch}
+        offHandleColor="#f1f5f9"
+        onHandleColor="#f1f5f9"
       />
       <div className={currentPrice > alert.price ? s.below : s.above} />
       <div className={s.text}>

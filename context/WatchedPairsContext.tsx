@@ -1,16 +1,15 @@
 import { createContext, useContext, ReactNode, useState, useEffect, useCallback, useRef } from "react";
 import Pair from "types/Pair";
-import WatchedPair from "types/WatchedPair";
 import Alert from "types/Alert";
 import { notify } from "utils/helpers";
 
-const pairsStorageKey = "coinhallAlertPairs";
-const alertsStorageKey = "coinhallAlertAlerts";
+const pairsStorageKey = "TerralertPairs";
+const alertsStorageKey = "TerralertAlerts";
 
 type StringToNumber = { [key: string]: number };
 type ProviderProps = { children: ReactNode };
 type ProviderValue = {
-  pairs: WatchedPair[];
+  pairs: Pair[];
   addPair: (pair: Pair) => void;
   removePair: (pairToRemove: Pair) => void;
   isPairWatched: (pair: Pair) => boolean;
@@ -24,7 +23,7 @@ type ProviderValue = {
 const WatchedPairsContext = createContext<ProviderValue | undefined>(undefined);
 
 export function WatchedPairsProvider({ children }: ProviderProps) {
-  const [pairs, setPairs] = useState<WatchedPair[]>([]);
+  const [pairs, setPairs] = useState<Pair[]>([]);
   const [alerts, setAlerts] = useState<Alert[]>([]);
   const prices = useRef<StringToNumber>({});
 
@@ -61,28 +60,7 @@ export function WatchedPairsProvider({ children }: ProviderProps) {
       prices.current = newPrices;
       return;
     }
-    // setAlerts((prevAlerts) => {
-    //   for (const alert of prevAlerts) {
-    //     if (alert.isOn && prices.current[alert.address]) {
-    //       const oldPrice = prices.current[alert.address];
-    //       const newPrice = newPrices[alert.address];
-    //       const newlyAboveAlertPrice = oldPrice < alert.price && newPrice >= alert.price;
-    //       const newlyBelowAlertPrice = oldPrice > alert.price && newPrice <= alert.price;
-    //       console.log("oldprice", oldPrice);
-    //       console.log("newprice", newPrice);
-    //       if (newlyAboveAlertPrice || newlyBelowAlertPrice) {
-    //         console.log("price");
-    //         const pair = pairs.find((p) => p.address === alert.address);
-    //         if (pair) {
-    //           console.log("notif");
-    //           notify(pair.primary.symbol, pair.secondary.symbol, alert.price, newlyBelowAlertPrice);
-    //           alert.isOn = false;
-    //         }
-    //       }
-    //     }
-    //   }
-    //   return prevAlerts;
-    // });
+
     const alertsToTurnOff: Alert[] = [];
     for (const alert of alerts) {
       if (alert.isOn && prices.current[alert.address]) {
@@ -93,8 +71,8 @@ export function WatchedPairsProvider({ children }: ProviderProps) {
         if (newlyAboveAlertPrice || newlyBelowAlertPrice) {
           const pair = pairs.find((p) => p.address === alert.address);
           if (pair) {
-            notify(pair.primary.symbol, pair.secondary.symbol, alert.price, newlyBelowAlertPrice);
-            //alert.isOn = false;
+            const icon = pairs.find((p) => p.address === alert.address)?.primary.iconUrl;
+            notify(pair.primary.symbol, pair.secondary.symbol, alert.price, newlyBelowAlertPrice, icon);
             alertsToTurnOff.push(alert);
           }
         }
@@ -127,6 +105,11 @@ export function WatchedPairsProvider({ children }: ProviderProps) {
       nextState.splice(index, 1);
       return nextState;
     });
+    setAlerts((prevAlerts) => {
+      const nextAlerts = prevAlerts.filter((a) => a.address !== pairToRemove.address);
+      console.log(nextAlerts);
+      return nextAlerts;
+    });
   }
 
   function isPairWatched(pair: Pair) {
@@ -134,8 +117,8 @@ export function WatchedPairsProvider({ children }: ProviderProps) {
   }
 
   const updatePrices = useCallback((allPairs: Pair[]) => {
-    setPairs((prevState) =>
-      prevState.map((oldWatchedPair) => {
+    setPairs((prevPairs) =>
+      prevPairs.map((oldWatchedPair) => {
         const newPair = allPairs.find((p) => p.address === oldWatchedPair.address);
         const newPrice = newPair ? newPair.price : oldWatchedPair.price;
         return { ...oldWatchedPair, price: newPrice };

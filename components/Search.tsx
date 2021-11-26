@@ -1,6 +1,6 @@
 import { useWatchedPairs } from "context/WatchedPairsContext";
 import useTokenData from "hooks/useTokenData";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import Pair from "types/Pair";
 import SearchListItem from "./SearchListItem";
 import s from "styles/Search.module.css";
@@ -24,14 +24,17 @@ export default function Search() {
           pair.primary.name.toLowerCase().includes(lowercaseQuery) ||
           pair.primary.symbol.toLowerCase().includes(lowercaseQuery) ||
           pair.secondary.name.toLowerCase().includes(lowercaseQuery) ||
-          pair.secondary.symbol.toLowerCase().includes(lowercaseQuery)
+          pair.secondary.symbol.toLowerCase().includes(lowercaseQuery) ||
+          pair.address.includes(lowercaseQuery) ||
+          pair.primary.address.includes(lowercaseQuery) ||
+          pair.secondary.address.includes(lowercaseQuery)
         );
       }) as Pair[];
       setMatches(newMatches);
     }
   }, [query, allPairs]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
         searchResultsRef.current &&
@@ -50,6 +53,7 @@ export default function Search() {
 
   function handleClickPair(pair: Pair) {
     watchedPairs.addPair(pair);
+    setShowSearchResults(false);
   }
 
   return (

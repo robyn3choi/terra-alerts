@@ -2,7 +2,7 @@ import Image from "next/image";
 import NoTokenIcon from "./NoTokenIcon";
 import { DEX_ICON_URLS } from "utils/constants";
 import { getPairSymbolsString, getPairPriceString } from "utils/helpers";
-import WatchedPair from "types/WatchedPair";
+import Pair from "types/Pair";
 import s from "styles/WatchList.module.css";
 import { useState } from "react";
 import AddAlert from "./AddAlert";
@@ -12,7 +12,7 @@ import TokenHeader from "./TokenHeader";
 import { MdClose } from "react-icons/md";
 
 type Props = {
-  pair: WatchedPair;
+  pair: Pair;
   alerts: Alert[];
   onRemovePair: () => void;
   onAddAlert: (price: number) => void;
